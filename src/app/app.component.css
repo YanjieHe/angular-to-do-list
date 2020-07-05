@@ -1,0 +1,9 @@
+.todo-app {
+  max-width: 400px;
+}
+
+.fab-add {
+    position:absolute;
+    right:30px;
+    top:50px;
+}
