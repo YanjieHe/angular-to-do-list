@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   showDialog = false;
-  editingTodo: any = null;
+  editingTodo?: TodoItem = null;
   fieldValue = "";
-  todoList: any = [];
+  todoList: Array<TodoItem> = [];
   okButtonText = "Create task";
 
   title = 'angular-to-do-list';
 
-  todoDialog(todo = null) {
+  todoDialog(todo?: TodoItem) {
     this.okButtonText = "Create task";
     this.fieldValue = "";
     this.editingTodo = todo;
@@ -29,11 +29,11 @@ export class AppComponent {
     this.todoList.splice(index, 1);
   }
 
-  editTodo(title) {
+  editTodo(title: string) {
     this.editingTodo.title = title;
   }
 
-  updateTodo(title) {
+  updateTodo(title?: string) {
     if (title) {
       title = title.trim();
       if (this.editingTodo) {
@@ -45,8 +45,8 @@ export class AppComponent {
     this.hideDialog();
   }
 
-  addTodo(title) {
-    const todo = { title: title, completed: false };
+  addTodo(title: string) {
+    const todo = new TodoItem(title, false);
     this.todoList.push(todo);
   }
 
@@ -54,5 +54,15 @@ export class AppComponent {
     this.showDialog = false;
     this.editingTodo = null;
     this.fieldValue = null;// make sure Input is new
+  }
+}
+
+class TodoItem {
+  title: string;
+  completed: false;
+
+  constructor(title: string, completed: false) {
+    this.title = title;
+    this.completed = completed;
   }
 }
